@@ -1,6 +1,6 @@
-const Employee = require("../lib/Employee");
+const Employee = require('../lib/Employee');
 
-describe("Employee", () => {
+describe('Employee', () => {
 
   describe("Initialization", () => {
     it("should return an object containing an employee name, id and email", () => {

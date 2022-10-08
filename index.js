@@ -32,11 +32,113 @@ const managerFirstRunQuestions = [
         message: 'What is the manager\'s office number?',
     }
 ]
-  
 
-inquirer
-    .prompt(managerFirstRunQuestions)
-    .then(({managerName, managerId, managerEmail, offNumber})=>{
-        const manager = new Manager(managerName, managerId, managerEmail, offNumber);
-        employees.push(manager);
-    }) 
+const engineerQuestions = [
+    {
+        type: 'input',
+        name: 'engineerName',
+        message: 'What is the Engineer\'s name?',
+    },
+    {
+        type: 'input',
+        name: 'engineerId',
+        message: 'What is the engineer\'s employee id?',
+    },
+    {
+        type:'input',
+        name: 'engineerEmail',
+        message: 'What is the engineer\'s Email Address?',
+    },
+    {
+        type:'input',
+        name: 'engineerGithub',
+        message: 'What is the engineer\'s Github name?'
+    }
+]
+
+const internQuestions = [
+    {
+        type: 'input',
+        name: 'internName',
+        message: 'What is the intern\'s name?',
+    },
+    {
+        type: 'input',
+        name: 'internId',
+        message: 'What is the intern\'s employee id?',
+    },
+    {
+        type:'input',
+        name: 'internEmail',
+        message: 'What is the intern\'s Email Address?',
+    },
+    {
+        type:'input',
+        name: 'internSchool',
+        message: 'What is the intern\'s school name?'
+    }
+
+]
+
+const menu = [
+    {
+        type:'rawlist',
+        name: 'menuSelection',
+        message: 'Which of the following would you like to do now?',
+        choices: ['Add An Engineer', 'Add An Intern', 'Finish'],
+    }
+]
+  
+const addManager= () =>{
+      inquirer
+        .prompt(managerFirstRunQuestions)
+        .then(({managerName, managerId, managerEmail, offNumber})=>{
+            const manager = new Manager(managerName, managerId, managerEmail, offNumber);
+            employees.push(manager); 
+            showMenu()
+        });
+}
+
+const addEngineer = () =>{
+    inquirer
+        .prompt(engineerQuestions)
+        .then(({engineerName, engineerId, engineerEmail, engineerGithub})=>{
+            const engineer = new Engineer(engineerName, engineerId,engineerEmail, engineerGithub);
+            employees.push(engineer);
+            showMenu();
+        })
+}
+
+const addIntern = () =>{
+    inquirer
+        .prompt(internQuestions)
+        .then(({internName, internId, internEmail, internSchool})=>{
+            const intern = new Intern(internName, internId, internEmail, internSchool);
+            employees.push(intern);
+            showMenu();
+        })
+}
+
+const showMenu = () =>{
+    inquirer
+        .prompt(menu)
+        .then(({menuSelection}) =>{
+            switch(menuSelection){
+                case 'Add An Intern':
+                    addIntern();
+                    break;
+                case 'Add An Engineer':
+                    addEngineer();
+                    break;
+                case 'Finish':
+                    console.log(employees);
+                    break;
+                default:
+                    console.log('error')
+
+            }
+        })
+}
+
+//addManager function kicks everything off
+addManager()
