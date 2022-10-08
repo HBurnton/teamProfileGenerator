@@ -2,10 +2,15 @@
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const buildHTML = require('./src/buildHTML')
 
 //Import inquirer to ask questions, file system to read and write files
 const inquirer = require('inquirer');
 const fs = require('fs');
+
+//Using path for compatibility of file write 
+const path = require('path');
+const outputDir = path.join('dist','index.html');
 
 //doing array as const because we can still add
 const employees = []
@@ -119,6 +124,14 @@ const addIntern = () =>{
         })
 }
 
+const buildPage = () =>{
+    const builtString = buildHTML(employees);
+    fs.writeFile(outputDir, builtString, (err) =>
+    err ? console.error(err) : console.log('Success!')
+ );
+
+}
+
 const showMenu = () =>{
     inquirer
         .prompt(menu)
@@ -132,6 +145,7 @@ const showMenu = () =>{
                     break;
                 case 'Finish':
                     console.log(employees);
+                    buildPage();
                     break;
                 default:
                     console.log('error')
