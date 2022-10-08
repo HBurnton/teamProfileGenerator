@@ -12,9 +12,10 @@ const fs = require('fs');
 const path = require('path');
 const outputDir = path.join('dist','index.html');
 
-//doing array as const because we can still add
+//doing array as const because we can still push
 const employees = []
 
+//Array of questions for manager
 const managerFirstRunQuestions = [
     {
         type: 'input',
@@ -38,6 +39,7 @@ const managerFirstRunQuestions = [
     }
 ]
 
+//Array of questions for engineer
 const engineerQuestions = [
     {
         type: 'input',
@@ -61,6 +63,7 @@ const engineerQuestions = [
     }
 ]
 
+//array of questions for Intern
 const internQuestions = [
     {
         type: 'input',
@@ -85,6 +88,7 @@ const internQuestions = [
 
 ]
 
+//array with single menu selection
 const menu = [
     {
         type:'rawlist',
@@ -93,7 +97,8 @@ const menu = [
         choices: ['Add An Engineer', 'Add An Intern', 'Finish'],
     }
 ]
-  
+
+//function to start process of adding manager which is run at bottom. This kicks of everything and leads to menu
 const addManager= () =>{
       inquirer
         .prompt(managerFirstRunQuestions)
@@ -104,6 +109,7 @@ const addManager= () =>{
         });
 }
 
+//function adds engineer using engineer question array above and then re-displays menu
 const addEngineer = () =>{
     inquirer
         .prompt(engineerQuestions)
@@ -114,6 +120,7 @@ const addEngineer = () =>{
         })
 }
 
+//function adds Intern utilizing intern array questions above and re-displays menu
 const addIntern = () =>{
     inquirer
         .prompt(internQuestions)
@@ -124,14 +131,17 @@ const addIntern = () =>{
         })
 }
 
+//run at the end, this uses the buildHTML function from buildHTML.js
 const buildPage = () =>{
     const builtString = buildHTML(employees);
+    //has a long string that is then written to the output directory location
     fs.writeFile(outputDir, builtString, (err) =>
     err ? console.error(err) : console.log('Success!')
  );
 
 }
 
+//showMenu displays a menu and allows for selection of adding Intern or Engineer or to finish
 const showMenu = () =>{
     inquirer
         .prompt(menu)

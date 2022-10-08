@@ -1,7 +1,4 @@
-const Engineer = require("../lib/Engineer");
-
-let employeeHtmlArr = [];
-
+//this page uses some prebuilt html and a map function to construct the page
 const buildHTML = (employees) => {
 
     const top = `<!DOCTYPE html>
@@ -21,10 +18,10 @@ const buildHTML = (employees) => {
     </div>
 
     <div class="row justify-content-center px-5">`
-
-    employeeHtmlArr = employees.map(employee=>{console.log('I am in')
+    //returns an array that builds cards using employee information
+    let employeeHtmlArr = employees.map(employee=>{
         if(employee.getRole() == 'Manager'){
-            return `<div class="col-lg-2 col-md-4 col-sm-5">
+            return `<div class="col-lg-3 col-md-4 col-sm-5">
             <div class="card shadow">
                 <h2 class="card-header bg-primary text-light fw-semibold fs-4">${employee.getName()}<br><i class="fa-solid fa-mug-hot mx-2"></i><span class="fs-5">Manager</span></h2>
                 <div class="card-body">
@@ -38,7 +35,7 @@ const buildHTML = (employees) => {
         </div>`
         };
         if(employee.getRole() == 'Engineer'){
-            return `<div class="col-lg-2 col-md-4 col-sm-5">
+            return `<div class="col-lg-3 col-md-4 col-sm-5">
             <div class="card shadow">
                 <h2 class="card-header bg-primary text-light fw-semibold fs-4">${employee.getName()}<br><i class="fa-solid fa-glasses mx-2"></i><span class="fs-5">Engineer</span></h2>
                 <div class="card-body">
@@ -52,7 +49,7 @@ const buildHTML = (employees) => {
         </div>`
         };
         if(employee.getRole() == 'Intern'){
-            return `<div class="col-lg-2 col-md-4 col-sm-5">
+            return `<div class="col-lg-3 col-md-4 col-sm-5">
             <div class="card shadow">
                 <h2 class="card-header bg-primary text-light fw-semibold fs-4">${employee.getName()}<br><i class="fa-solid fa-graduation-cap mx-2"></i><span class="fs-5">Intern</span></h2>
                 <div class="card-body">
