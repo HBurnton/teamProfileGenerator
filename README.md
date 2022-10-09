@@ -21,6 +21,7 @@ to download jest and inquirer and run using ```node index```
 When first being run, the application will ask for manager information including Name, ID, Email, and office number. There is simple validation to ensure something is entered. After user will be prompted to choose to enter either an engineer, and intern or to finish. Adding Engineer or Intern will prompt further questions. When user selects finish a new html page will be generated in the dist folder. Please see video and screenshots below.
 * ### Video Demo
 The following link directs to a youtube video showing how project works
+
 [Video Demo](https://www.youtube.com/watch?v=cgfZdq2of7Q)
 
 * ### Screenshots
@@ -29,15 +30,18 @@ The following link directs to a youtube video showing how project works
 ![Running Application](./src/images/running.png)
 
 * ### Built Page
-[Click Here For A Demo Of a Generate Page](https://github.com/HBurnton/teamProfileGenerator/blob/main/dist/index.html)
+[Click Here For A Demo Of a Generated Page](https://github.com/HBurnton/teamProfileGenerator/blob/main/dist/index.html)
 
 ## Testing Information
 Test files are provided to test classes. Download, ```npm install``` to use jest and run test using ```npm test```
 
 ## Questions? Contact me
+
 [Find me on GitHub](https://github.com/hburnton)
 
 [Send me an email](mailto:hburnton@gmail.com)
+
+[Project Page on Github](https://github.com/HBurnton/teamProfileGenerator)
 
 ## License
 This project licensed under the MIT license.
