@@ -21,21 +21,33 @@ const managerFirstRunQuestions = [
         type: 'input',
         name: 'managerName',
         message: 'What is the manager\'s name?',
+        validate(ans){
+            return isValid(ans)
+        },
     },
     {
         type: 'input',
         name: 'managerId',
         message: 'What is the manager\'s employee id?',
+        validate(ans){
+            return isValid(ans)
+        },
     },
     {
         type:'input',
         name: 'managerEmail',
         message: 'What is the manager\'s Email Address?',
+        validate(ans){
+            return isValid(ans)
+        },
     },
     {
         type: 'input',
         name: 'offNumber',
         message: 'What is the manager\'s office number?',
+        validate(ans){
+            return isValid(ans)
+        },
     }
 ]
 
@@ -45,21 +57,33 @@ const engineerQuestions = [
         type: 'input',
         name: 'engineerName',
         message: 'What is the Engineer\'s name?',
+        validate(ans){
+            return isValid(ans)
+        },
     },
     {
         type: 'input',
         name: 'engineerId',
         message: 'What is the engineer\'s employee id?',
+        validate(ans){
+            return isValid(ans)
+        },
     },
     {
         type:'input',
         name: 'engineerEmail',
         message: 'What is the engineer\'s Email Address?',
+        validate(ans){
+            return isValid(ans)
+        },
     },
     {
         type:'input',
         name: 'engineerGithub',
-        message: 'What is the engineer\'s Github name?'
+        message: 'What is the engineer\'s Github name?',
+        validate(ans){
+            return isValid(ans)
+        },
     }
 ]
 
@@ -69,21 +93,33 @@ const internQuestions = [
         type: 'input',
         name: 'internName',
         message: 'What is the intern\'s name?',
+        validate(ans){
+            return isValid(ans)
+        },
     },
     {
         type: 'input',
         name: 'internId',
         message: 'What is the intern\'s employee id?',
+        validate(ans){
+            return isValid(ans)
+        },
     },
     {
         type:'input',
         name: 'internEmail',
         message: 'What is the intern\'s Email Address?',
+        validate(ans){
+            return isValid(ans)
+        },
     },
     {
         type:'input',
         name: 'internSchool',
-        message: 'What is the intern\'s school name?'
+        message: 'What is the intern\'s school name?',
+        validate(ans){
+            return isValid(ans)
+        },
     }
 
 ]
@@ -162,6 +198,13 @@ const showMenu = () =>{
 
             }
         })
+}
+
+const isValid = (ans) =>{
+    if(ans.trim().length){
+        return true
+    }
+    return 'Please do not leave field empty'
 }
 
 //addManager function kicks everything off
